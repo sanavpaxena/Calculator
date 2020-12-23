@@ -82,13 +82,4 @@ buttonplus.grid(row = 4, column = 3)
 buttonEq = tkinter.Button(root, text = "=",width = 8,command = lambda:calculate(), padx = 1)
 buttonEq.grid(row = 5, column = 1, columnspan = 10)
 
-
-
-
-
-
-
-
-
-
 root.mainloop()
