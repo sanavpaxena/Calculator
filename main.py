@@ -24,12 +24,44 @@ def calculate():
             result = eval(expression)            
         except:
             result = "Error"
-            expression = ""
-    expression =str(result) 
+            expression = "" 
     label_result.config(text = result)
+    expression = str(result)
+
+
+def quit():
+    exit()
+
+def key_handler(event):
+    global expression
+    print(event.keysym)
+    if event.keysym in ("1",'2','3','4','5','6','7','8','9',"0"):
+        add(event.keysym)
+    elif event.keysym == "plus":
+        add("+")
+    elif event.keysym == "minus":
+        add("-")
+    elif event.keysym == "asterisk":
+        add("*")
+    elif event.keysym == "slash":
+        add("/")
+    elif event.keysym in ("c","C") :
+        clear()
+    elif event.keysym in ("Return","equal"):
+        calculate()
+    elif event.keysym == "BackS  pace":
+        expression = expression[0:len(expression)-1]
+        label_result.config(text = expression)
+    elif event.keysym == "period":
+        add(".")
+    elif event.keysym == "Escape":
+        quit()
+
+
+root.bind("<Key>",key_handler)
 
 label_result = tkinter.Label(root, text = "")
-label_result.grid(row = 0, column = 0, columnspan = 4)
+label_result.grid(row = 0, column = 0, columnspan = 100)
 
 button1 = tkinter.Button(root, text = "1", command =lambda: add("1"), padx = 7.5)
 button1.grid(row = 1, column = 0)
